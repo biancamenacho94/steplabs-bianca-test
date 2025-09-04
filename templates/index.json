@@ -1,0 +1,121 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "section_1_WQdCXg": {
+      "type": "section-1",
+      "blocks": {
+        "benefit_DWAfVV": {
+          "type": "benefit",
+          "settings": {
+            "benefit_icon": "shopify://shop_images/compression-icon_svg.svg",
+            "benefit_text": "Activates Muscles & Builds Strength"
+          }
+        },
+        "benefit_i7GLPE": {
+          "type": "benefit",
+          "settings": {
+            "benefit_icon": "shopify://shop_images/compression-icon.svg_3.svg",
+            "benefit_text": "Boosts Recovery &Circulation"
+          }
+        },
+        "benefit_76ze6j": {
+          "type": "benefit",
+          "settings": {
+            "benefit_icon": "shopify://shop_images/compression-icon.svg_4.svg",
+            "benefit_text": "Supports Healthy Joints & Movement"
+          }
+        }
+      },
+      "block_order": [
+        "benefit_DWAfVV",
+        "benefit_i7GLPE",
+        "benefit_76ze6j"
+      ],
+      "name": "Section 1",
+      "settings": {
+        "stars_image": "shopify://shop_images/Button_-_4.90_stars.svg",
+        "trust_badge": "Trusted by 1,000+ happy customers",
+        "heading": "Wake Up The Muscles That Matter.",
+        "text": "Suji delivers science-backed targeted compression — pain relief, muscle activation, and lasting strength in minutes, right from home.",
+        "button_1_text": "Try Suji",
+        "button_1_link": "",
+        "button_2_text": "How It Works",
+        "button_2_link": "",
+        "button_primary_bg": "#e10017",
+        "button_primary_text": "#ffffff",
+        "button_secondary_bg": "#ffffff14",
+        "button_secondary_text": "#e10017",
+        "button_secondary_border": "#e10017",
+        "guarantee_icon": "shopify://shop_images/time-Vector.svg",
+        "guarantee_text": "30-day money back guarantee",
+        "media_type": "image",
+        "media_image": "shopify://shop_images/image-section-1.png",
+        "section_bg": "#f9f5f3"
+      }
+    },
+    "section_2_bbpm79": {
+      "type": "section-2",
+      "blocks": {
+        "media_iHDUJz": {
+          "type": "media",
+          "settings": {
+            "image": "shopify://shop_images/image-section-2.png",
+            "image_alt": "Image section 2"
+          }
+        },
+        "metrics_group_EkQdMa": {
+          "type": "metrics_group",
+          "settings": {
+            "group_heading": "BUILD LASTING STRENGTH IN JUST 3 SHORT SESSIONS A WEEK",
+            "show_top_rule": true,
+            "eyebrow_a": "In a clinical study¹",
+            "value_a": "2.0x",
+            "desc_a": "muscle strength increase vs traditional low-load training",
+            "eyebrow_b": "In a systematic review²",
+            "value_b": "3.2X",
+            "desc_b": "greater muscle mass gains compared to walking or light training without Targeted Compression/BFR"
+          }
+        },
+        "metrics_group_UdMbmC": {
+          "type": "metrics_group",
+          "settings": {
+            "group_heading": "CLINICALLY SHOWN TO SPEED UP RECOVERY",
+            "show_top_rule": true,
+            "eyebrow_a": "In a clinical study¹",
+            "value_a": "2.0x",
+            "desc_a": "muscle strength increase vs traditional low-load training",
+            "eyebrow_b": "In a systematic review²",
+            "value_b": "3.2X",
+            "desc_b": "greater muscle mass gains compared to walking or light training without Targeted Compression/BFR"
+          }
+        }
+      },
+      "block_order": [
+        "media_iHDUJz",
+        "metrics_group_EkQdMa",
+        "metrics_group_UdMbmC"
+      ],
+      "name": "Section 2",
+      "settings": {
+        "title": "Backed by Science.",
+        "subtitle": "Proven by Results.",
+        "button_label": "See The Science",
+        "button_link": "shopify://pages/the-science-page",
+        "button_new_tab": true,
+        "footnotes": "<p>¹Yasuda et al., 2010 ²Loenneke et al., 2012<br/>³Takarada et al., 2000 ⁴Hughes et al., 2017</p>"
+      }
+    }
+  },
+  "order": [
+    "section_1_WQdCXg",
+    "section_2_bbpm79"
+  ]
+}

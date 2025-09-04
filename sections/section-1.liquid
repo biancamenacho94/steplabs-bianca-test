@@ -1,0 +1,164 @@
+{% comment %}
+Section 1 — Two columns: Content (left) + Media (right)
+- Button colors come from Theme Editor (CSS variables scoped to this section)
+- No inline styles on buttons
+- Responsive gutters; media sticks to right on desktop
+- Images via image_tag (with width/height + lazy)
+{% endcomment %}
+
+{{ 'section-1.css' | asset_url | stylesheet_tag }}
+
+{%- assign dom_id = 'section-1-' | append: section.id -%}
+
+{%- comment -%}
+  CSS variables (scoped) with safe defaults in case merchant hasn't picked colors yet
+{%- endcomment -%}
+{%- assign p_bg  = section.settings.button_primary_bg        | default: '#E10017' -%}
+{%- assign p_txt = section.settings.button_primary_text      | default: '#FFFFFF' -%}
+{%- assign s_bg  = section.settings.button_secondary_bg      | default: 'transparent' -%}
+{%- assign s_txt = section.settings.button_secondary_text    | default: '#E10017' -%}
+{%- assign s_brd = section.settings.button_secondary_border  | default: '#E10017' -%}
+{%- assign section_bg = section.settings.section_bg | default: 'transparent' -%}
+
+
+<style>
+  #{{ dom_id }} {
+    --fs-btn-primary-bg: {{ p_bg }};
+    --fs-btn-primary-text: {{ p_txt }};
+
+    --fs-btn-secondary-bg: {{ s_bg }};
+    --fs-btn-secondary-text: {{ s_txt }};
+    --fs-btn-secondary-border: {{ s_brd }};
+    --fs-section-bg: {{ section_bg }};
+  }
+</style>
+
+<section class="feature-split" id="{{ dom_id }}" >
+  <div class="feature-split__container page-width">
+    
+    <!-- Left: Content -->
+    <div class="feature-split__content">
+      <div class="feature-split__trust-badge">
+        {% if section.settings.stars_image != blank %}
+          {{ section.settings.stars_image
+            | image_url: width: 120
+            | image_tag: alt: 'Rating stars', class: 'feature-split__stars', loading: 'lazy' }}
+        {% endif %}
+        {% if section.settings.trust_badge != blank %}
+          <p class="feature-split__trust">{{ section.settings.trust_badge }}</p>
+        {% endif %}
+      </div>
+
+      {% if section.settings.heading != blank %}
+        <h2 class="feature-split__heading">{{ section.settings.heading }}</h2>
+      {% endif %}
+
+      {% if section.settings.text != blank %}
+        <p class="feature-split__text">{{ section.settings.text }}</p>
+      {% endif %}
+
+      <div class="feature-split__buttons">
+        {% if section.settings.button_1_text != blank %}
+          <a href="{{ section.settings.button_1_link | default: '#' }}"
+             class="feature-split__btn feature-split__btn--primary">
+            {{ section.settings.button_1_text }}
+          </a>
+        {% endif %}
+        {% if section.settings.button_2_text != blank %}
+          <a href="{{ section.settings.button_2_link | default: '#' }}"
+             class="feature-split__btn feature-split__btn--secondary">
+            {{ section.settings.button_2_text }}
+          </a>
+        {% endif %}
+      </div>
+
+      {% if section.settings.guarantee_text != blank %}
+        <div class="feature-split__guarantee">
+          {% if section.settings.guarantee_icon != blank %}
+            {{ section.settings.guarantee_icon
+              | image_url: width: 24
+              | image_tag: alt: 'Guarantee icon', class: 'feature-split__guarantee-icon', loading: 'lazy' }}
+          {% endif %}
+          <span>{{ section.settings.guarantee_text }}</span>
+        </div>
+      {% endif %}
+
+      <div class="feature-split__benefits">
+        {% for block in section.blocks %}
+          {% if block.type == 'benefit' %}
+            <div class="feature-split__benefit" {{ block.shopify_attributes }}>
+              {% if block.settings.benefit_icon != blank %}
+                {{ block.settings.benefit_icon
+                  | image_url: width: 32
+                  | image_tag: alt: '', class: 'feature-split__benefit-icon', loading: 'lazy' }}
+              {% endif %}
+              {% if block.settings.benefit_text != blank %}
+                <p class="feature-split__benefit-text">{{ block.settings.benefit_text }}</p>
+              {% endif %}
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- Right: Media (stick to right on desktop) -->
+    <div class="feature-split__media">
+      {% if section.settings.media_type == 'image' and section.settings.media_image != blank %}
+        {{ section.settings.media_image
+          | image_url: width: 800
+          | image_tag: alt: 'Feature image', class: 'feature-split__image', loading: 'lazy' }}
+      {% endif %}
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Section 1",
+  "settings": [
+    { "type": "image_picker", "id": "stars_image", "label": "Stars image" },
+    { "type": "text", "id": "trust_badge", "label": "Trust badge text" },
+    { "type": "text", "id": "heading", "label": "Main heading" },
+    { "type": "textarea", "id": "text", "label": "Short description" },
+
+    { "type": "text", "id": "button_1_text", "label": "Primary button text", "default": "Try Suji" },
+    { "type": "url",  "id": "button_1_link", "label": "Primary button link" },
+
+    { "type": "text", "id": "button_2_text", "label": "Secondary button text", "default": "How It Works" },
+    { "type": "url",  "id": "button_2_link", "label": "Secondary button link" },
+
+    { "type": "color", "id": "button_primary_bg",     "label": "Primary button background",   "default": "#E10017" },
+    { "type": "color", "id": "button_primary_text",   "label": "Primary button text color",   "default": "#FFFFFF" },
+    { "type": "color", "id": "button_secondary_bg",   "label": "Secondary button background", "default": "transparent" },
+    { "type": "color", "id": "button_secondary_text", "label": "Secondary button text color", "default": "#E10017" },
+    { "type": "color", "id": "button_secondary_border","label":"Secondary button border",     "default": "#E10017" },
+    { "type": "image_picker", "id": "guarantee_icon", "label": "Guarantee icon" },
+    { "type": "text", "id": "guarantee_text", "label": "Guarantee text", "default": "30-day money back guarantee" },
+
+    {
+      "type": "select",
+      "id": "media_type",
+      "label": "Media type",
+      "options": [{ "value": "image", "label": "Image" }],
+      "default": "image"
+    },
+    { "type": "image_picker", "id": "media_image", "label": "Media image" },
+    { "type": "color", "id": "section_bg", "label": "Section background", "default": "transparent" }
+  ],
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "Benefit",
+      "limit": 3,
+      "settings": [
+        { "type": "image_picker", "id": "benefit_icon", "label": "Icon" },
+        { "type": "text", "id": "benefit_text", "label": "Text" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Section 1", "category": "Custom" }]
+}
+{% endschema %}
+
+{% javascript %}{% endjavascript %}
