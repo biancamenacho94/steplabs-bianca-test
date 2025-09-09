@@ -1,4 +1,4 @@
-/* Base layout */
+/* Section-1 */
 .feature-split {
   background: var(--fs-section-bg, transparent);
 }
@@ -74,11 +74,25 @@
 }
 
 
+/* Primary hover */
 .feature-split__btn--primary:hover,
-.feature-split__btn--primary:focus,
+.feature-split__btn--primary:focus {
+  background: var(--fs-btn-primary-hover-bg, #B80013);
+  color: var(--fs-btn-primary-hover-text, #FFFFFF);
+}
+
+/* Secondary hover */
 .feature-split__btn--secondary:hover,
 .feature-split__btn--secondary:focus {
-  filter: brightness(0.95);
+  background: var(--fs-btn-secondary-hover-bg, transparent);
+  color: var(--fs-btn-secondary-hover-text, #B80013);
+  border-color: var(--fs-btn-secondary-hover-border, #B80013);
+}
+
+/* Accessibility: visible focus ring without layout shift */
+.feature-split__btn:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
 }
 
 .feature-split__guarantee {
