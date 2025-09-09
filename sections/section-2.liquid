@@ -1,43 +1,38 @@
 {% comment %}
-Section 2 — Backed by Science (N metric groups)
-- Dos columnas (Media izquierda | Contenido derecha)
-- Bloques dinámicos:
-  • Media (máx. 1)
-  • Metrics Group (ilimitados): encabezado + 2 métricas (A/B)
-- Todo editable desde el Theme Editor
-- Sin CSS inline; estilos en /assets/section-2.css
+  Section 2
 {% endcomment %}
 
 {{ 'section-2.css' | asset_url | stylesheet_tag }}
 
 <section class="s2">
   <div class="s2__container">
-    {%- comment %} COLUMNA: MEDIA (usa el primer bloque Media si existe) {% endcomment -%}
+    {%- comment %} COLUMNA: MEDIA (usa el primer bloque Media si existe) {%- endcomment %}
     <div class="s2__media">
       {%- assign media_blocks = section.blocks | where: 'type', 'media' -%}
       {%- if media_blocks.size > 0 -%}
         {%- assign m = media_blocks.first -%}
         {%- if m.settings.image != blank -%}
-          {{ m.settings.image
+          {{
+            m.settings.image
             | image_url: width: 1800
-            | image_tag:
-              alt: m.settings.image_alt,
-              loading: 'lazy',
-              class: 's2__image' }}
+            | image_tag: alt: m.settings.image_alt, loading: 'lazy', class: 's2__image'
+          }}
         {%- else -%}
           <div class="s2__image--placeholder" aria-hidden="true"></div>
         {%- endif -%}
       {%- endif -%}
     </div>
 
-    {%- comment %} COLUMNA: CONTENIDO {% endcomment -%}
+    {%- comment %} COLUMNA: CONTENIDO {%- endcomment %}
     <div class="s2__content">
       {%- if section.settings.title != blank -%}
         <h2 class="s2__title">{{ section.settings.title }}</h2>
       {%- endif -%}
 
       {%- if section.settings.subtitle != blank -%}
-        <p class="s2__subtitle"><em>{{ section.settings.subtitle }}</em></p>
+        <p class="s2__subtitle">
+          <em>{{ section.settings.subtitle }}</em>
+        </p>
       {%- endif -%}
 
       {%- comment -%} BLOQUES: METRICS GROUP (encabezado + 2 métricas) {%- endcomment -%}
@@ -82,9 +77,13 @@ Section 2 — Backed by Science (N metric groups)
       {%- endfor -%}
 
       {%- if section.settings.button_label != blank and section.settings.button_link != blank -%}
-        <a class="s2__button"
-           href="{{ section.settings.button_link }}"
-           {% if section.settings.button_new_tab %}target="_blank" rel="noopener noreferrer"{% endif %}>
+        <a
+          class="s2__button"
+          href="{{ section.settings.button_link }}"
+          {% if section.settings.button_new_tab %}
+            target="_blank" rel="noopener noreferrer"
+          {% endif %}
+        >
           {{ section.settings.button_label }}
           <span aria-hidden="true" class="s2__button-icon">↗</span>
         </a>
@@ -129,13 +128,13 @@ Section 2 — Backed by Science (N metric groups)
         { "type": "text", "id": "group_heading", "label": "Group heading" },
         { "type": "checkbox", "id": "show_top_rule", "label": "Show top rule (divider)", "default": true },
 
-        { "type": "text", "id": "eyebrow_a", "label": "Metric A — eyebrow",  },
-        { "type": "text", "id": "value_a", "label": "Metric A — value",  },
+        { "type": "text", "id": "eyebrow_a", "label": "Metric A — eyebrow" },
+        { "type": "text", "id": "value_a", "label": "Metric A — value" },
         { "type": "textarea", "id": "desc_a", "label": "Metric A — description" },
-        { "type": "text", "id": "eyebrow_b", "label": "Metric B — eyebrow"},
+
+        { "type": "text", "id": "eyebrow_b", "label": "Metric B — eyebrow" },
         { "type": "text", "id": "value_b", "label": "Metric B — value" },
         { "type": "textarea", "id": "desc_b", "label": "Metric B — description" }
-    
       ]
     }
   ],
