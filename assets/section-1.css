@@ -39,7 +39,7 @@
 
 .feature-split__trust {
   font-size: 0.9rem;
-  color: #666;
+  color: rgb(22, 3, 187);
   margin-bottom: 10px;
 }
 
@@ -62,8 +62,8 @@
 
 /* Primary */
 .feature-split__btn--primary {
-  background: var(--fs-btn-primary-bg, #E10017);
-  color: var(--fs-btn-primary-text, #FFFFFF);
+  background:  #131ddc;
+  color: #FFFFFF;
 }
 
 /* Secondary */
